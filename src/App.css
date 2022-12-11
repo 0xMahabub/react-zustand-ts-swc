@@ -39,3 +39,15 @@
 .read-the-docs {
   color: #888;
 }
+
+button {
+  padding: 1rem 1.5rem;
+  background-color: #3b79b6 !important;
+  color: white;
+  outline: 0;
+  border: none;
+  margin: 0 0.25rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  text-transform: capitalize;
+}
