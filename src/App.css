@@ -51,3 +51,15 @@ button {
   cursor: pointer;
   text-transform: capitalize;
 }
+
+/*=====> Custom <=====*/
+.router-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0 0.5rem;
+}
+.router-links a {
+  color: #333;
+  text-decoration: underline;
+}

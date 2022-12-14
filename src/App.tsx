@@ -2,15 +2,9 @@
 import reactLogo from './assets/react.svg';
 import './App.css';
 import { useStateStore } from './store';
+import { useRoutes, BrowserRouter, RouteObject, Link } from 'react-router-dom';
 
 function App() {
-  // const [count, setCount] = useState(0);
-  // using zustand state management
-  // const count = useStateStore((state) => state.count);
-  // const increment = useStateStore((state) => state.increment);
-  // const decrement = useStateStore((state) => state.decrement);
-  // const reset = useStateStore((state) => state.reset);
-  // array pick all at once
   const [count, increment, decrement, reset] = useStateStore((state) => [
     state.count,
     state.increment,
@@ -29,6 +23,15 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      <BrowserRouter>
+        <nav className='router-links'>
+          <Link to='/'>home</Link>
+          <Link to='/2'>Page 2</Link>
+          <Link to='/3'>Page 3</Link>
+          <Link to='/404-test'>404 Test</Link>
+        </nav>
+        <AppRouter />
+      </BrowserRouter>
       <div className='card'>
         <button onClick={() => increment(7)} title='increment'>
           +
@@ -48,6 +51,23 @@ function App() {
       </p>
     </div>
   );
+}
+
+// Router config
+function AppRouter() {
+  const routes: RouteObject[] = [
+    {
+      children: [
+        { element: <h2>Home Page</h2>, index: true },
+        { element: <h2>Page 2</h2>, path: '/2' },
+        { element: <h2>Page 3</h2>, path: '/3' },
+        { element: <h2>404 Page</h2>, path: '*' },
+      ],
+    },
+  ];
+
+  const router = useRoutes(routes);
+  return router;
 }
 
 export default App;
