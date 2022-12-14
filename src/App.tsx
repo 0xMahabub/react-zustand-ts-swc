@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg';
 import './App.css';
 import { useStateStore } from './store';
 import { useRoutes, BrowserRouter, RouteObject, Link } from 'react-router-dom';
+import { HomePage, Notfound } from './pages';
 
 function App() {
   const [count, increment, decrement, reset] = useStateStore((state) => [
@@ -58,10 +59,10 @@ function AppRouter() {
   const routes: RouteObject[] = [
     {
       children: [
-        { element: <h2>Home Page</h2>, index: true },
+        { element: <HomePage />, index: true },
         { element: <h2>Page 2</h2>, path: '/2' },
         { element: <h2>Page 3</h2>, path: '/3' },
-        { element: <h2>404 Page</h2>, path: '*' },
+        { element: <Notfound />, path: '*' },
       ],
     },
   ];
