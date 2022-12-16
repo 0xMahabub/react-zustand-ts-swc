@@ -7,9 +7,16 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# ignoring lock file for various user-choices
+.lock
+package-lock.json
+pnpm-lock.yaml
+
+
 node_modules
 dist
 dist-ssr
+coverage
 *.local
 
 # Editor directories and files
@@ -22,3 +29,13 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Misc. & Others
+.env
+*.env
+!sample.env
+.husky
+!.husky/pre-commit
+!.husky/post-commit
+!.husky/pre-push
+!.husky/post-push

@@ -1,9 +1,12 @@
-// import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import './App.css';
 import { useStateStore } from './store';
 import { useRoutes, BrowserRouter, RouteObject, Link } from 'react-router-dom';
 import { HomePage, Notfound } from './pages';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+const queryClient = new QueryClient();
 
 function App() {
   const [count, increment, decrement, reset] = useStateStore((state) => [
@@ -25,13 +28,16 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <BrowserRouter>
-        <nav className='router-links'>
-          <Link to='/'>home</Link>
-          <Link to='/2'>Page 2</Link>
-          <Link to='/3'>Page 3</Link>
-          <Link to='/404-test'>404 Test</Link>
-        </nav>
-        <AppRouter />
+        <QueryClientProvider client={queryClient}>
+          <nav className='router-links'>
+            <Link to='/'>home</Link>
+            <Link to='/2'>Page 2</Link>
+            <Link to='/3'>Page 3</Link>
+            <Link to='/404-test'>404 Test</Link>
+          </nav>
+          <AppRouter />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
       </BrowserRouter>
       <div className='card'>
         <button onClick={() => increment(7)} title='increment'>
