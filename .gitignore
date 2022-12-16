@@ -31,6 +31,9 @@ coverage
 *.sw?
 
 # Misc. & Others
+.env
+*.env
+!sample.env
 .husky
 !.husky/pre-commit
 !.husky/post-commit
